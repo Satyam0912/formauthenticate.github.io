@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 60vh;
+    width: 45%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginSection,
+.signUpSection {
+    height: 28vh;
+    width: 95%;
+    border: 2px solid black;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
