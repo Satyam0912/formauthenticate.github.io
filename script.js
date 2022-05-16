@@ -24,6 +24,7 @@ const lookup = {
 let signUpPassword = document.getElementById('inputSignUpPassword');
 let loginPassword = document.getElementById('inputLoginPassword');
 let saveMessage = document.getElementById('showSavedMessage');
+let weakStrong = document.getElementById('showPasswordWeakStrong');
 let alreadyAccMessage = document.getElementById('showAlreadyAccount');
 let correctMessage = document.getElementById('correctPasswordMessage');
 let inCorrectMessage = document.getElementById('inCorrectPasswordMessage');
@@ -51,57 +52,62 @@ const encodePassword = (inputString) => {
 
 // password strongness weakness
 
-// function checkCapital(str) {
-//     for (let i = 0; i < str.length; i++) {
-//         if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-// function checkSmall(str) {
-//     for (let i = 0; i < str.length; i++) {
-//         if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-// function checkNum(str) {
-//     for (let i = 0; i < str.length; i++) {
-//         if (str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-// function checkLength(str) {
-//     if (str.length > 7) {
-//         return true;
-//     }
-//     return false;
-// }
+function checkAlphabet(str) {
+    for (let i = 0; i < str.length; i++) {
+        let smallChar = str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90;
+        let capitalChar = str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122;
+        if (smallChar || capitalChar) {
+            return true;
+        }
+    }
+    return false;
+}
+function checkNumber(str) {
+    for (let i = 0; i < str.length; i++) {
+        let numberChar = str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57;
+        if (numberChar) {
+            return true;
+        }
+    }
+    return false;
+}
 
-// // let s = '9';
-// // console.log(s.charCodeAt(0));
-// // console.log(checkCapital(s));
+function checkSpecialChar(str) {
+    for (let i = 0; i < str.length; i++) {
+        let smallChar = str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90;
+        let capitalChar = str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122;
+        let numberChar = str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57;
+        if (!smallChar && !capitalChar && !numberChar) {
+            return true;
+        }
+    }
+    return false;
+}
 
-// function checkPasswordStrongWeak() {
-//     let s = signUpPassword.value;
-//     // console.log('working');
-//     if (checkLength(s) && checkCapital(s) && checkSmall(s) && checkNum(s)) {
-//         console.log('STRONG');
-//     }
-//     else if (checkLength(s) && checkCapital(s) && checkSmall(s) && !checkNum(s)) {
-//         console.log('MEDIUM');
-//     }
-//     else if (checkLength(s) && (!checkCapital(s) || !checkSmall(s)) && !checkNum(s)) {
-//         console.log('WEAK');
-//     }
-//     else if (!checkLength(s)) {
-//         console.log('Password Length should be greater than 7 characters');
-//     }
-// }
+function checkPasswordStrongWeak() {
+    let s = signUpPassword.value;
+    // console.log('working');
+    if (s.length == 0) {
+        weakStrong.innerText = '';
+    }
+    else if (s.length >= 5) {
+
+        if (checkAlphabet(s) && checkNumber(s) && checkSpecialChar(s)) {
+            weakStrong.innerText = 'STRONG';
+        }
+        else if (checkAlphabet(s) && checkNumber(s)) {
+            weakStrong.innerText = 'MODERATE';
+        }
+        else if (checkAlphabet(s)) {
+            weakStrong.innerText = 'WEAK';
+        }
+
+    }
+    else {
+        weakStrong.innerText = 'Password Length should be greater than 5 characters';
+    }
+
+}
 
 /*------------------------------------------------------*/
 
