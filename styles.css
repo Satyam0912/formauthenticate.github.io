@@ -4,12 +4,18 @@
     box-sizing: border-box;
 }
 
-body {
+.containerAll {
     height: 100vh;
     width: 100%;
+    background-color: bisque;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+h1 {
+    margin: 20px;
 }
 
 .container {
@@ -17,6 +23,7 @@ body {
     width: 45%;
     border: 2px solid black;
     display: flex;
+    background-color: violet;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -28,9 +35,31 @@ body {
     width: 95%;
     border: 2px solid black;
     padding-top: 20px;
+    background-color:lightcyan;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
 }
 
 input {
