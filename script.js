@@ -94,17 +94,21 @@ function checkPasswordStrongWeak() {
 
         if (checkAlphabet(s) && checkNumber(s) && checkSpecialChar(s)) {
             weakStrong.innerText = 'STRONG';
+            weakStrong.style.cssText = 'color:green; font-weight:bold;';
         }
         else if (checkAlphabet(s) && checkNumber(s)) {
             weakStrong.innerText = 'MODERATE';
+            weakStrong.style.cssText = 'color:orange; font-weight:bold;';
         }
         else if (checkAlphabet(s)) {
             weakStrong.innerText = 'WEAK';
+            weakStrong.style.cssText = 'color:red; font-weight:bold;';
         }
 
     }
     else {
         weakStrong.innerText = 'Password Length should be greater than 5 characters';
+        weakStrong.style.cssText = 'color:red; font-weight:bold;';
     }
 
 }
